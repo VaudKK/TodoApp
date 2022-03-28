@@ -12,20 +12,20 @@ import java.time.LocalDateTime;
 public class Todos {
 
     @Id
-    private String id;
+    private String _id;
 
     private String task;
 
     private String notes;
 
-    private Priority priority;
+    private Priority priority = Priority.NONE;
 
     private LocalDateTime dueDate;
 
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
-    private Boolean closed;
+    private Boolean closed = false;
 
-    private Boolean done;
+    private Boolean done = false;
 
 }

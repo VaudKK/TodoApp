@@ -3,5 +3,14 @@ server:
 spring:
   application:
     name: todos-app
-  datasource:
-    url:
+  data:
+    mongodb:
+      database: todos-db
+      username: vaud
+      password: vaud2022
+      host: localhost
+      port: 27017
+      authentication-database: admin
+  graphql:
+    graphiql:
+      enabled: true

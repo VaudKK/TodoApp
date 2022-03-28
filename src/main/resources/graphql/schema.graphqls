@@ -1,0 +1,23 @@
+type Query{
+    getAllTodos : [Todos]
+}
+
+enum Priority{
+    NONE,
+    LOW,
+    MEDIUM,
+    HIGH
+}
+
+type Todos {
+    _id: ID!
+    task: String!
+    notes: String
+    priority: Priority!
+    done: Boolean!
+    closed: Boolean!
+}
+
+type Mutation{
+    addTodo(task:String!):Todos
+}
