@@ -1,3 +1,5 @@
+scalar DateTime
+
 type Query{
     getAllTodos : [Todos]
 }
@@ -16,6 +18,8 @@ type Todos {
     priority: Priority!
     done: Boolean!
     closed: Boolean!
+    createdAt: DateTime
+    dueDate: DateTime
 }
 
 type Mutation{
