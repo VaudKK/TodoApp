@@ -25,6 +25,11 @@ public class TodosServiceGraphqlController {
         return todosService.createTodo(task);
     }
 
+    @MutationMapping("setDoneStatus")
+    public Mono<Todos> setDoneStatus(@Argument String uuid,@Argument Boolean done){
+        return todosService.setDoneStatus(uuid,done);
+    }
+
     @QueryMapping("getAllTodos")
     public Flux<Todos> getAllTodos(){
         return todosService.getAllTodos();

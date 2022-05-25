@@ -24,4 +24,5 @@ type Todos {
 
 type Mutation{
     addTodo(task:String!):Todos
+    setDoneStatus(uuid:String!,done:Boolean!):Todos
 }

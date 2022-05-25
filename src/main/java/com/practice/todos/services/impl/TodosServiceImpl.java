@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDateTime;
+
 @Service
 public class TodosServiceImpl implements TodosService {
 
@@ -26,5 +28,18 @@ public class TodosServiceImpl implements TodosService {
     @Override
     public Flux<Todos> getAllTodos() {
         return todosRepository.findAll();
+    }
+
+    @Override
+    public Flux<Todos> getTodoByDate(LocalDateTime localDateTime) {
+        return todosRepository.findByDueDate(localDateTime);
+    }
+
+    @Override
+    public Mono<Todos> setDoneStatus(String uuid,Boolean isDone) {
+        return todosRepository.findById(uuid)
+                .doOnNext(todo -> todo.setDone(isDone))
+                .flatMap(todosRepository::save)
+                .switchIfEmpty(Mono.empty());
     }
 }
