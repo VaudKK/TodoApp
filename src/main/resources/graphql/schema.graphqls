@@ -1,4 +1,3 @@
-scalar DateTime
 
 type Query{
     getAllTodos : [Todos]
@@ -18,11 +17,12 @@ type Todos {
     priority: Priority!
     done: Boolean!
     closed: Boolean!
-    createdAt: DateTime
-    dueDate: DateTime
+    createdAt: String
+    dueDate: String
 }
 
 type Mutation{
-    addTodo(task:String!):Todos
+    addTodo(task:String!,dueDate:String):Todos
     setDoneStatus(uuid:String!,done:Boolean!):Todos
+    closeTodo(uuid:String!):Todos
 }

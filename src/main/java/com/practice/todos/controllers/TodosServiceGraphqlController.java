@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDate;
+
 @Controller
 public class TodosServiceGraphqlController {
 
@@ -21,13 +23,18 @@ public class TodosServiceGraphqlController {
 
 
     @MutationMapping("addTodo")
-    public Mono<Todos> addTodo(@Argument String task){
-        return todosService.createTodo(task);
+    public Mono<Todos> addTodo(@Argument String task, @Argument String dueDate){
+        return todosService.createTodo(task,dueDate);
     }
 
     @MutationMapping("setDoneStatus")
     public Mono<Todos> setDoneStatus(@Argument String uuid,@Argument Boolean done){
         return todosService.setDoneStatus(uuid,done);
+    }
+
+    @MutationMapping("closeTodo")
+    public Mono<Todos> closeTodo(@Argument String uuid){
+        return todosService.closeTodo(uuid);
     }
 
     @QueryMapping("getAllTodos")

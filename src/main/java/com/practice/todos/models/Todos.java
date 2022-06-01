@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -20,7 +21,7 @@ public class Todos {
 
     private Priority priority = Priority.NONE;
 
-    private LocalDateTime dueDate;
+    private LocalDate dueDate;
 
     private LocalDateTime createdAt = LocalDateTime.now();
 

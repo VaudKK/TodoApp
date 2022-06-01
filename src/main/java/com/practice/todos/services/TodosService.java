@@ -8,12 +8,14 @@ import java.time.LocalDateTime;
 
 public interface TodosService {
 
-    Mono<Todos> createTodo(String task);
+    Mono<Todos> createTodo(String task, String dueDate);
 
     Flux<Todos> getAllTodos();
 
     Flux<Todos> getTodoByDate(LocalDateTime localDateTime);
 
     Mono<Todos> setDoneStatus(String uuid,Boolean isDone);
+
+    Mono<Todos> closeTodo(String uuid);
 
 }
